@@ -15,7 +15,10 @@ class first_app extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: MyLogin(),
       routes: {
+        'register': (context) => MyRegister(),
+        'login': (context) => MyLogin(),
         "/": (context) => HomeScreen(),
         "//": (context) => BMIscreen(),
         "/weather": (context) => Weatherscreen()
