@@ -1,8 +1,10 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors
 import 'package:first_app/screens/BMIcalculator.dart';
+import 'package:first_app/screens/homescreen.dart';
+import 'package:first_app/screens/login.dart';
+import 'package:first_app/screens/register.dart';
 import 'package:first_app/screens/weatherscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:first_app/screens/homeScreen.dart';
 
 void main() {
   runApp(const first_app());
@@ -15,7 +17,6 @@ class first_app extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyLogin(),
       routes: {
         'register': (context) => MyRegister(),
         'login': (context) => MyLogin(),
@@ -23,7 +24,8 @@ class first_app extends StatelessWidget {
         "//": (context) => BMIscreen(),
         "/weather": (context) => Weatherscreen()
       },
-      initialRoute: "/",
+      initialRoute: "register",
     );
   }
 }
+
