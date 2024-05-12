@@ -13,7 +13,7 @@ class _MyRegisterState extends State<MyRegister> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/register.png'), fit: BoxFit.cover),
+            image: AssetImage('register.png'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
