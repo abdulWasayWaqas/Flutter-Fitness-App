@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 import 'dart:math';
-import 'package:first_app/common/bottombar.dart';
+// import 'package:first_app/common/bottombar.dart';
 import 'package:first_app/common/menudrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
@@ -22,9 +22,10 @@ class _BMIcsreenState extends State<BMIscreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("BMI Calculator"),
+        backgroundColor: Colors.orange,
       ),
       drawer: const MenuDrawer(),
-      bottomNavigationBar: MyBottomNavBar(),
+      // bottomNavigationBar: MyBottomNavBar(),
       body: _BMIcalculatorUI(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -32,6 +33,7 @@ class _BMIcsreenState extends State<BMIscreen> {
             _bmi = _weight / pow(_height / 100, 2);
           });
         },
+        backgroundColor: Colors.orange,
         child: const Icon(
           Icons.calculate,
         ),
@@ -65,7 +67,7 @@ class _BMIcsreenState extends State<BMIscreen> {
 
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Colors.orange,
         borderRadius: BorderRadius.circular(15),
       ),
       margin: const EdgeInsets.all(10.0),
@@ -83,7 +85,7 @@ class _BMIcsreenState extends State<BMIscreen> {
   Widget _genderSelector() {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Colors.orange,
         borderRadius: BorderRadius.circular(
           15,
         ),
@@ -111,8 +113,8 @@ class _BMIcsreenState extends State<BMIscreen> {
                 icon: Icon(
                   Icons.male,
                   color: _selectedGender == 0
-                      ? Color.fromARGB(103, 192, 64, 156)
-                      : Color.fromARGB(255, 0, 0, 0),
+                      ? Color.fromARGB(255, 0, 0, 0)
+                      : Color.fromARGB(255, 161, 105, 44),
                 ),
               ),
               const Text(
@@ -135,8 +137,8 @@ class _BMIcsreenState extends State<BMIscreen> {
                 icon: Icon(
                   Icons.female,
                   color: _selectedGender == 1
-                      ? Color.fromARGB(103, 192, 64, 156)
-                      : Colors.white38,
+                      ? Color.fromARGB(255, 0, 0, 0)
+                      : Color.fromARGB(255, 161, 105, 44),
                 ),
               ),
               const Text(
@@ -155,7 +157,7 @@ class _BMIcsreenState extends State<BMIscreen> {
   Widget _heightInput() {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Colors.orange,
         borderRadius: BorderRadius.circular(
           15,
         ),
@@ -187,8 +189,8 @@ class _BMIcsreenState extends State<BMIscreen> {
                 },
               );
             },
-            activeColor: Color.fromARGB(
-                103, 192, 64, 156), // Change slider active color to black
+            activeColor: const Color.fromARGB(
+                255, 0, 0, 0), // Change slider active color to black
             inactiveColor:
                 Colors.white38, // Change slider inactive color to grey
           ),
@@ -218,7 +220,7 @@ class _BMIcsreenState extends State<BMIscreen> {
   Widget _weightInput() {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Colors.orange,
         borderRadius: BorderRadius.circular(
           15,
         ),
@@ -251,7 +253,7 @@ class _BMIcsreenState extends State<BMIscreen> {
               });
             },
             decimalPlaces: 0,
-            color: Color.fromARGB(103, 192, 64, 156),
+            color: Color.fromARGB(255, 161, 105, 44),
           ),
         ],
       ),
@@ -261,7 +263,7 @@ class _BMIcsreenState extends State<BMIscreen> {
   Widget _ageInput() {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Colors.orange,
         borderRadius: BorderRadius.circular(
           15,
         ),
@@ -294,7 +296,7 @@ class _BMIcsreenState extends State<BMIscreen> {
               });
             },
             decimalPlaces: 0,
-            color: Color.fromARGB(103, 192, 64, 156),
+            color: Color.fromARGB(255, 161, 105, 44),
           ),
         ],
       ),
@@ -304,7 +306,7 @@ class _BMIcsreenState extends State<BMIscreen> {
   Widget _bmiResult() {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Colors.orange,
         borderRadius: BorderRadius.circular(
           15,
         ),
