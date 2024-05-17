@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import 'package:weather/weather.dart';
-import '../common/bottombar.dart';
 import '../common/menudrawer.dart';
 
 const OPENWEATHER_API_KEY = '60811668dfa2ff7217406469f488fe9c';
@@ -34,7 +33,7 @@ class WeatherscreenState extends State<Weatherscreen> {
       LocationPermission permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied ||
           permission == LocationPermission.deniedForever) {
-        throw Exception('Location permission denied'); 
+        throw Exception('Location permission denied');
       }
       Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
@@ -65,9 +64,17 @@ class WeatherscreenState extends State<Weatherscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const MenuDrawer(),
-      bottomNavigationBar: MyBottomNavBar(),
-      body: _WeatherUI(),
+      appBar: AppBar(
+        title: Text("Weather"),
+        backgroundColor: Colors.orange,
+      ),
+      drawer: MenuDrawer(),
+      body: Container(
+        width: MediaQuery.sizeOf(context).width,
+        height: MediaQuery.sizeOf(context).height,
+        color: Colors.black, // Set the background color to black
+        child: _WeatherUI(),
+      ),
     );
   }
 
@@ -77,33 +84,29 @@ class WeatherscreenState extends State<Weatherscreen> {
         child: CircularProgressIndicator(),
       );
     }
-    return SizedBox(
-      width: MediaQuery.sizeOf(context).width,
-      height: MediaQuery.sizeOf(context).height,
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _locationHeader(),
-          SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.08,
-          ),
-          _dateTimeInfo(),
-          SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.05,
-          ),
-          _weatherIcon(),
-          SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.02,
-          ),
-          _currentTemp(),
-          SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.02,
-          ),
-          _extraInfo(),
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        _locationHeader(),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.08,
+        ),
+        _dateTimeInfo(),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.05,
+        ),
+        _weatherIcon(),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.02,
+        ),
+        _currentTemp(),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.02,
+        ),
+        _extraInfo(),
+      ],
     );
   }
 
@@ -113,6 +116,7 @@ class WeatherscreenState extends State<Weatherscreen> {
       style: const TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w500,
+        color: Colors.white, // Set text color to white for better visibility
       ),
     );
   }
@@ -125,6 +129,8 @@ class WeatherscreenState extends State<Weatherscreen> {
           DateFormat("h:mm a").format(now),
           style: const TextStyle(
             fontSize: 35,
+            color:
+                Colors.white, // Set text color to white for better visibility
           ),
         ),
         const SizedBox(
@@ -139,12 +145,16 @@ class WeatherscreenState extends State<Weatherscreen> {
               DateFormat("EEEE").format(now),
               style: const TextStyle(
                 fontWeight: FontWeight.w700,
+                color: Colors
+                    .white, // Set text color to white for better visibility
               ),
             ),
             Text(
-              "  ${DateFormat("d.m.y").format(now)}",
+              "  ${DateFormat("d.M.y").format(now)}",
               style: const TextStyle(
                 fontWeight: FontWeight.w400,
+                color: Colors
+                    .white, // Set text color to white for better visibility
               ),
             ),
           ],
@@ -171,7 +181,8 @@ class WeatherscreenState extends State<Weatherscreen> {
         Text(
           _weather?.weatherDescription ?? "",
           style: const TextStyle(
-            color: Colors.black,
+            color:
+                Colors.white, // Set text color to white for better visibility
             fontSize: 20,
           ),
         ),
@@ -183,7 +194,7 @@ class WeatherscreenState extends State<Weatherscreen> {
     return Text(
       "${_weather?.temperature?.celsius?.toStringAsFixed(0)}° C",
       style: const TextStyle(
-        color: Colors.black,
+        color: Colors.white, // Set text color to white for better visibility
         fontSize: 90,
         fontWeight: FontWeight.w500,
       ),
@@ -195,14 +206,10 @@ class WeatherscreenState extends State<Weatherscreen> {
       height: MediaQuery.sizeOf(context).height * 0.15,
       width: MediaQuery.sizeOf(context).width * 0.80,
       decoration: BoxDecoration(
-        color: Color.fromARGB(103, 192, 64, 156),
-        borderRadius: BorderRadius.circular(
-          20,
-        ),
+        color: Colors.orange,
+        borderRadius: BorderRadius.circular(20),
       ),
-      padding: const EdgeInsets.all(
-        8.0,
-      ),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -215,14 +222,16 @@ class WeatherscreenState extends State<Weatherscreen> {
               Text(
                 "Max: ${_weather?.tempMax?.celsius?.toStringAsFixed(0)}° C",
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Colors
+                      .white, // Set text color to white for better visibility
                   fontSize: 15,
                 ),
               ),
               Text(
                 "Min: ${_weather?.tempMin?.celsius?.toStringAsFixed(0)}° C",
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Colors
+                      .white, // Set text color to white for better visibility
                   fontSize: 15,
                 ),
               )
@@ -236,14 +245,16 @@ class WeatherscreenState extends State<Weatherscreen> {
               Text(
                 "Wind: ${_weather?.windSpeed?.toStringAsFixed(0)}m/s",
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Colors
+                      .white, // Set text color to white for better visibility
                   fontSize: 15,
                 ),
               ),
               Text(
                 "Humidity: ${_weather?.humidity?.toStringAsFixed(0)}%",
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Colors
+                      .white, // Set text color to white for better visibility
                   fontSize: 15,
                 ),
               )
@@ -254,3 +265,4 @@ class WeatherscreenState extends State<Weatherscreen> {
     );
   }
 }
+
