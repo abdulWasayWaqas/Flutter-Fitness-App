@@ -27,145 +27,153 @@ class _MyLoginState extends State<MyLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/login.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Stack(
-            children: [
-              Container(),
-              Container(
-                padding: EdgeInsets.only(left: 35, top: 130),
-                child: Text(
-                  'Welcome\nBack',
-                  style: TextStyle(color: Colors.white, fontSize: 33),
-                ),
+      backgroundColor: Colors.orange, // Setting background color to orange
+      body: Scaffold(
+        backgroundColor: Colors.black, // Setting background color to black
+        body: Stack(
+          children: [
+            Container(
+              padding: EdgeInsets.only(left: 35, top: 130),
+              child: Text(
+                'Welcome\nBack',
+                style: TextStyle(color: Colors.orange, fontSize: 33),
               ),
-              SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.5,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 35, right: 35),
-                        child: Column(
-                          children: [
-                            TextField(
-                              controller: emailController,
-                              style: TextStyle(color: Colors.black),
-                              decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
-                                hintText: "Email",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                errorText:
-                                    emailError.isNotEmpty ? emailError : null,
+            ),
+            SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.5,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 35, right: 35),
+                      child: Column(
+                        children: [
+                          TextField(
+                            controller: emailController,
+                            style: TextStyle(
+                                color: Colors
+                                    .white), // Changing text color to white
+                            decoration: InputDecoration(
+                              fillColor: Colors.black,
+                              filled: true,
+                              hintText: "Email",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
                               ),
+                              errorText:
+                                  emailError.isNotEmpty ? emailError : null,
+                              hintStyle: TextStyle(
+                                  color: Colors
+                                      .white), // Changing hint text color to black
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            TextField(
-                              controller: passwordController,
-                              style: TextStyle(),
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
-                                hintText: "Password",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                errorText: passwordError.isNotEmpty
-                                    ? passwordError
-                                    : null,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextField(
+                            controller: passwordController,
+                            style: TextStyle(
+                                color: Colors
+                                    .white), // Changing text color to white
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              fillColor: Colors.black,
+                              filled: true,
+                              hintText: "Password",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
                               ),
+                              errorText: passwordError.isNotEmpty
+                                  ? passwordError
+                                  : null,
+                              hintStyle: TextStyle(
+                                  color: Colors
+                                      .white), // Changing hint text color to black
                             ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Sign in',
-                                  style: TextStyle(
-                                    fontSize: 27,
-                                    fontWeight: FontWeight.w700,
-                                  ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Sign in',
+                                style: TextStyle(
+                                  fontSize: 27,
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color.fromARGB(255, 0, 0,
+                                      0), // Changing text color to white
                                 ),
-                                CircleAvatar(
-                                  radius: 30,
-                                  backgroundColor: Color(0xff4c505b),
-                                  child: IconButton(
-                                    color: Colors.white,
-                                    onPressed: () {
-                                      setState(() {
-                                        emailError = '';
-                                        passwordError = '';
-                                      });
-                                      login(
-                                        emailController.text,
-                                        passwordController.text,
-                                      );
-                                    },
-                                    icon: Icon(Icons.arrow_forward),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                TextButton(
+                              ),
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundColor: Colors.orange,
+                                // Changing button color to orange
+                                child: IconButton(
+                                  color: Colors
+                                      .black, // Changing icon color to black
                                   onPressed: () {
-                                    Navigator.pushNamed(context, 'register');
+                                    setState(() {
+                                      emailError = '';
+                                      passwordError = '';
+                                    });
+                                    login(
+                                      emailController.text,
+                                      passwordController.text,
+                                    );
                                   },
-                                  child: Text(
-                                    'Sign Up',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18,
-                                    ),
+                                  icon: Icon(Icons.arrow_forward),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, 'register');
+                                },
+                                child: Text(
+                                  'Sign Up',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Colors
+                                        .orange, // Changing text color to orange
+                                    fontSize: 18,
                                   ),
                                 ),
-                                TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Forgot Password',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18,
-                                    ),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Forgot Password',
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Colors
+                                        .orange, // Changing text color to orange
+                                    fontSize: 18,
                                   ),
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
