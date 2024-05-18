@@ -28,4 +28,3 @@ class first_app extends StatelessWidget {
     );
   }
 }
-
