@@ -26,7 +26,7 @@ class _MyRegisterState extends State<MyRegister> {
               padding: EdgeInsets.only(left: 35, top: 30),
               child: Text(
                 'Create\nAccount',
-                style: TextStyle(color: Colors.white, fontSize: 33),
+                style: TextStyle(color: Colors.orange, fontSize: 33),
               ),
             ),
             SingleChildScrollView(
@@ -122,7 +122,7 @@ class _MyRegisterState extends State<MyRegister> {
                               Text(
                                 'Sign Up',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.orange,
                                     fontSize: 27,
                                     fontWeight: FontWeight.w700),
                               ),
@@ -156,7 +156,7 @@ class _MyRegisterState extends State<MyRegister> {
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,
-                                      color: Colors.white,
+                                      color: Colors.orange,
                                       fontSize: 18),
                                 ),
                               ),
