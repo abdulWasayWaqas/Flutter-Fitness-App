@@ -1,3 +1,4 @@
+import 'package:first_app/screens/StepCounter.dart';
 import 'package:first_app/screens/homescreen.dart';
 import 'package:first_app/screens/BMIcalculator.dart';
 import 'package:first_app/screens/weatherscreen.dart';
@@ -9,7 +10,7 @@ class MenuDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Color.fromARGB(103, 192, 64, 156),
+      backgroundColor: Colors.orange,
       child: ListView(
         children: buildMenuItems(context),
       ),
@@ -28,7 +29,7 @@ class MenuDrawer extends StatelessWidget {
       "Home",
       "BMI",
       "Weather",
-      "Exercises",
+      "Step Counter",
       "About"
     };
     menuTitles.forEach((element) {
@@ -49,6 +50,9 @@ class MenuDrawer extends StatelessWidget {
             case "Weather":
               screen = Weatherscreen();
               break;
+            case "Step Counter":
+              screen = StepCounterScreen();
+              break;
             default:
           }
 
@@ -61,3 +65,4 @@ class MenuDrawer extends StatelessWidget {
     return menuItems;
   }
 }
+
